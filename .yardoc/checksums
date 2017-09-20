@@ -1,0 +1,5 @@
+app/models/person.rb 5a62741cd74869a5582e44cb1cf6fe7c4019be0a
+app/models/person_group.rb cd027bb6b0f493a90c6822796a4182c12cbc82ff
+app/models/social_network.rb deef5a99f1194b2b068db91512f05b723569af8d
+app/helpers/application_helper.rb eef3d3adce96afe8b14c19b6135323f47543d979
+app/controllers/application_controller.rb 7afa8bd02d2c49fd8df3c6e372b8520c9f916e8e

@@ -1,0 +1,16 @@
+== README
+
+ruby: 2.3.3
+rails: 4.2.9 
+
+create a postgress user:
+  name: socials
+  pass: socials
+or
+  edit ./config/database.yml
+
+then run:
+  $ rake db:drop; rake db:create; rake db:migrate; rake db:seed
+
+to run tests:
+  $ rake test

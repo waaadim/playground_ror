@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  poster: poster1
+  person_group: politicians
+
+two:
+  poster: poster2 
+  person_group: federal_legislators

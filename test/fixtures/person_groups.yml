@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+politicians:
+  name: Group1
+
+federal_legislators:
+  name: Group2
+
+dudes:
+  name: Group2

@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+poster1:
+  person: joe
+
+poster2:
+  federal_legislator: fele2
+
+poster3:
+  person: boy

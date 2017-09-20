@@ -1,0 +1,55 @@
+.page-header{ :style => 'margin-bottom: 70px;' }
+  .pull-right
+    = link_to 'Home', root_path, :style => 'display: inline-block; margin-top: 25px;'
+  %h1{ :'data-position' => 'right', :'data-intro' => 'This is a demo for filterrific. Filter and sort the list of articles. Click anywhere to remove the overlay.' }
+    Articles
+
+.well
+  = form_for_filterrific @filterrific do |f|
+    .row
+      .col-md-3
+        .form-group
+          %label Client
+          = f.select :with_clients,
+                     @filterrific.select_options[:with_clients],
+                     { :include_blank => '- Any -' },
+                     { :class => 'form-control' }
+      .col-md-3
+        .form-group
+          %label List
+          = f.select :with_person_group,
+                     @filterrific.select_options[:with_person_group],
+                     { :include_blank => '- Any -' },
+                     { :class => 'form-control' }
+      .col-md-3
+        .form-group
+          %label Social Network
+          = f.select :with_social_networks,
+                     @filterrific.select_options[:with_social_networks],
+                     { :include_blank => '- Any -' },
+                     { :class => 'form-control' }
+      .col-md-3
+        .form-group
+          %label Sorted by
+          = f.select :sorted_by,
+                     @filterrific.select_options[:sorted_by],
+                     {},
+                     { :class => 'form-control' }
+    .row
+      .col-md-3
+        .form-group
+          %label Published after
+          = f.text_field :published_after,
+                         :class => 'js-datepicker form-control'
+      .col-md-3
+        .form-group
+          %label Published before
+          = f.text_field :published_before,
+                         :class => 'js-datepicker form-control'
+
+#results
+  = render :partial => 'home/article_list',
+           :locals => { :articles => @articles }
+
+:javascript
+  $('.js-datepicker').datepicker();

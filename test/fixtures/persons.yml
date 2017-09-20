@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+joe:
+  first_name: Joe
+  last_name: Doe
+
+john:
+  first_name: John
+  last_name: Doe
+
+boy:
+  first_name: Boy
+  last_name: Doe
