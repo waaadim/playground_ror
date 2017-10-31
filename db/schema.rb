@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909094147) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20171031185239) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -27,8 +24,8 @@ ActiveRecord::Schema.define(version: 20170909094147) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "articles", ["poster_id"], name: "index_articles_on_poster_id", using: :btree
-  add_index "articles", ["social_network_id"], name: "index_articles_on_social_network_id", using: :btree
+  add_index "articles", ["poster_id"], name: "index_articles_on_poster_id"
+  add_index "articles", ["social_network_id"], name: "index_articles_on_social_network_id"
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
@@ -43,8 +40,14 @@ ActiveRecord::Schema.define(version: 20170909094147) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "clients_person_groups", ["client_id"], name: "index_clients_person_groups_on_client_id", using: :btree
-  add_index "clients_person_groups", ["person_group_id"], name: "index_clients_person_groups_on_person_group_id", using: :btree
+  add_index "clients_person_groups", ["client_id"], name: "index_clients_person_groups_on_client_id"
+  add_index "clients_person_groups", ["person_group_id"], name: "index_clients_person_groups_on_person_group_id"
+
+  create_table "countries", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "federal_legislators", force: :cascade do |t|
     t.string   "first_name"
@@ -52,6 +55,22 @@ ActiveRecord::Schema.define(version: 20170909094147) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "languages_translators", force: :cascade do |t|
+    t.integer  "language_id"
+    t.integer  "translator_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "languages_translators", ["language_id"], name: "index_languages_translators_on_language_id"
+  add_index "languages_translators", ["translator_id"], name: "index_languages_translators_on_translator_id"
 
   create_table "people", force: :cascade do |t|
     t.string   "first_name"
@@ -73,8 +92,8 @@ ActiveRecord::Schema.define(version: 20170909094147) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "person_groups_posters", ["person_group_id"], name: "index_person_groups_posters_on_person_group_id", using: :btree
-  add_index "person_groups_posters", ["poster_id"], name: "index_person_groups_posters_on_poster_id", using: :btree
+  add_index "person_groups_posters", ["person_group_id"], name: "index_person_groups_posters_on_person_group_id"
+  add_index "person_groups_posters", ["poster_id"], name: "index_person_groups_posters_on_poster_id"
 
   create_table "posters", force: :cascade do |t|
     t.integer  "person_id"
@@ -83,8 +102,8 @@ ActiveRecord::Schema.define(version: 20170909094147) do
     t.datetime "updated_at",            null: false
   end
 
-  add_index "posters", ["federal_legislator_id"], name: "index_posters_on_federal_legislator_id", using: :btree
-  add_index "posters", ["person_id"], name: "index_posters_on_person_id", using: :btree
+  add_index "posters", ["federal_legislator_id"], name: "index_posters_on_federal_legislator_id"
+  add_index "posters", ["person_id"], name: "index_posters_on_person_id"
 
   create_table "social_networks", force: :cascade do |t|
     t.string   "name"
@@ -92,12 +111,17 @@ ActiveRecord::Schema.define(version: 20170909094147) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "social_networks", ["name"], name: "index_social_networks_on_name", using: :btree
+  add_index "social_networks", ["name"], name: "index_social_networks_on_name"
 
-  add_foreign_key "articles", "posters"
-  add_foreign_key "articles", "social_networks"
-  add_foreign_key "clients_person_groups", "clients"
-  add_foreign_key "clients_person_groups", "person_groups"
-  add_foreign_key "person_groups_posters", "person_groups"
-  add_foreign_key "person_groups_posters", "posters"
+  create_table "translators", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "source"
+    t.integer  "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "translators", ["country_id"], name: "index_translators_on_country_id"
+
 end
