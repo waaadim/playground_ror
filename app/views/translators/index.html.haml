@@ -1,0 +1,29 @@
+%h2 Translators
+
+.well
+  =form_tag(controller: :translators, action: :fetch) do
+    .source_field
+      =text_field_tag :source
+      =button_tag 'Go', class: 'submit-button', type: :submit
+
+%table
+  %thead
+    %tr
+      %th First Name
+      %th Last Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @translators.each do |translator|
+      %tr
+        %td= translator.first_name
+        %td= translator.last_name
+        %td= link_to 'Show', translator
+        %td= link_to 'Edit', edit_translator_path(translator)
+        %td= link_to 'Destroy', translator, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Translator', new_translator_path
