@@ -1,6 +1,6 @@
 module Parsers
   class Proz
-    FIELDS = %i[first_name last_name].freeze
+    FIELDS = %i[first_name last_name country languages].freeze
 
     def initialize(doc)
       @doc = doc
@@ -19,6 +19,14 @@ module Parsers
 
     def last_name
       'Doe'
+    end
+
+    def country
+      'USA'
+    end
+
+    def languages
+      %w[English French]
     end
   end
 end

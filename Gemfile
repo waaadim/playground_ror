@@ -36,6 +36,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'nokogiri'
+gem 'select2-rails'
 
 gem 'web-console', '~> 2.0', group: :development
 

@@ -18,3 +18,4 @@
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
 //= require filterrific/filterrific-jquery
+//= require select2

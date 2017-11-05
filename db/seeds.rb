@@ -59,3 +59,6 @@ c.save!
 c = Client.find(3)
 c.person_groups = PersonGroup.order(id: :desc).limit(1)
 c.save!
+
+%w[Moldova USA].each { |name| Country.create!(name: name) }
+%w[English Russian French].each { |name| Language.create!(name: name) }

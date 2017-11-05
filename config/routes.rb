@@ -5,11 +5,7 @@ Rails.application.routes.draw do
   get 'link/index'
   get 'home/index'
 
-  resources :translators do
-    collection do
-      post 'fetch'
-    end
-  end
+  resources :translators
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,22 +1,19 @@
 class TranslatorsController < ApplicationController
-  before_action :set_translator, only: [:show, :edit, :update, :destroy]
+  include TranslatorsHelper
+  before_action :set_translator, only: %i[show edit update destroy]
 
   def index
     @translators = Translator.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
-    @translator = Translator.new
+    # TODO: pass paramas[:source] instead of hardcoded url
+    @translator = build_translator_from_parsed_data('https://www.proz.com/profile/52171')
   end
 
-  def edit
-  end
-
-  def fetch
-  end
+  def edit; end
 
   def create
     @translator = Translator.new(translator_params)
@@ -53,13 +50,18 @@ class TranslatorsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_translator
-      @translator = Translator.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def translator_params
-      params.fetch(:translator, {})
-    end
+  def set_translator
+    @translator = Translator.find(params[:id])
+  end
+
+  def translator_params
+    params.require(:translator).permit(
+      :first_name,
+      :last_name,
+      :source,
+      :country_id,
+      language_ids: []
+    )
+  end
 end

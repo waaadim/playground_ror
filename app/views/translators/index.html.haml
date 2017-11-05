@@ -1,7 +1,7 @@
 %h2 Translators
 
 .well
-  =form_tag(controller: :translators, action: :fetch) do
+  =form_tag({ controller: :translators, action: :new }, { method: :get}) do
     .source_field
       =text_field_tag :source
       =button_tag 'Go', class: 'submit-button', type: :submit
